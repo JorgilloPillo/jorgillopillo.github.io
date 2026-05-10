@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Física: Medición y Magnitudes</title>
+    <meta name="description" content="Aprende sobre medición, magnitudes físicas y sistemas de unidades.">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        
+        <!-- PANTALLA DE BIENVENIDA -->
+        <section id="screen-welcome" class="screen active">
+            <div class="glass-panel">
+                <div class="icon-container">
+                    <svg viewBox="0 0 24 24" width="64" height="64" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m12 16 4-4-4-4"></path><path d="M8 12h8"></path></svg>
+                </div>
+                <h1>Física Interactiva</h1>
+                <p>Medición y Magnitudes Físicas</p>
+                <div class="input-group">
+                    <input type="text" id="student-name" placeholder="Escribe tu nombre completo" autocomplete="off">
+                </div>
+                <button id="btn-start" class="btn-primary" disabled>Comenzar Aventura</button>
+            </div>
+            <div class="particles-bg" id="particles"></div>
+        </section>
+
+        <!-- MENÚ PRINCIPAL -->
+        <section id="screen-menu" class="screen hidden">
+            <header>
+                <div class="header-content">
+                    <h2>Hola, <span id="display-name">Estudiante</span> 👋</h2>
+                    <p>¿Qué vamos a aprender hoy?</p>
+                </div>
+                <button id="btn-settings" class="btn-icon" aria-label="Configuración">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+            </header>
+            
+            <div class="menu-grid">
+                <div class="menu-card" data-target="screen-theory">
+                    <div class="card-icon bg-blue"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg></div>
+                    <h3>Teoría y Conceptos</h3>
+                    <p>Sistemas MKS, CGS, Inglés e Internacional.</p>
+                </div>
+                <div class="menu-card" data-target="screen-examples">
+                    <div class="card-icon bg-purple"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+                    <h3>Ejemplos de Conversión</h3>
+                    <p>20 ejemplos detallados paso a paso.</p>
+                </div>
+                <div class="menu-card" data-target="screen-simulations">
+                    <div class="card-icon bg-orange"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <h3>Simulaciones</h3>
+                    <p>Experimenta con la masa y la longitud interactiva.</p>
+                </div>
+                <div class="menu-card" data-target="screen-practice">
+                    <div class="card-icon bg-green"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                    <h3>Práctica Libre</h3>
+                    <p>Banco de ejercicios para afianzar habilidades.</p>
+                </div>
+                <div class="menu-card test-card" data-target="screen-test-intro">
+                    <div class="card-icon bg-red"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+                    <h3>Evaluación Oficial</h3>
+                    <p>Test de 15 preguntas. ¡Requiere concentración total!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLAS DE CONTENIDO (Se rellenarán vía JS para mantener el HTML limpio) -->
+        <section id="screen-theory" class="screen hidden content-screen">
+            <header class="sub-header">
+                <button class="btn-back"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg></button>
+                <h2>Teoría: Magnitudes</h2>
+            </header>
+            <div class="scroll-content" id="theory-content">
+                <!-- Generado por JS -->
+            </div>
+        </section>
+
+        <section id="screen-examples" class="screen hidden content-screen">
+            <header class="sub-header">
+                <button class="btn-back"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg></button>
+                <h2>Ejemplos de Conversión</h2>
+            </header>
+            <div class="scroll-content" id="examples-content">
+                <!-- Generado por JS -->
+            </div>
+        </section>
+
+        <section id="screen-simulations" class="screen hidden content-screen">
+            <header class="sub-header">
+                <button class="btn-back"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg></button>
+                <h2>Simuladores</h2>
+            </header>
+            <div class="scroll-content">
+                <div class="sim-container">
+                    <h3>Regla Virtual (Longitud)</h3>
+                    <div class="sim-box" id="sim-length">
+                        <label>Ingresa Metros (m):</label>
+                        <input type="number" id="sim-m" value="1" step="0.1">
+                        <div class="conversions">
+                            <div><span id="sim-cm">100</span> cm</div>
+                            <div><span id="sim-mm">1000</span> mm</div>
+                            <div><span id="sim-in">39.37</span> in</div>
+                            <div><span id="sim-ft">3.28</span> ft</div>
+                        </div>
+                        <div class="visual-ruler">
+                            <div class="ruler-bar" id="ruler-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sim-container mt-4">
+                    <h3>Balanza Virtual (Masa)</h3>
+                    <div class="sim-box" id="sim-mass">
+                        <label>Ingresa Kilogramos (kg):</label>
+                        <input type="number" id="sim-kg" value="1" step="0.1">
+                        <div class="conversions">
+                            <div><span id="sim-g">1000</span> g</div>
+                            <div><span id="sim-lb">2.204</span> lb</div>
+                            <div><span id="sim-oz">35.27</span> oz</div>
+                        </div>
+                        <div class="visual-scale">
+                            <div class="scale-base"></div>
+                            <div class="scale-pan" id="scale-pan">📦</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRÁCTICA LIBRE -->
+        <section id="screen-practice" class="screen hidden content-screen">
+            <header class="sub-header">
+                <button class="btn-back"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg></button>
+                <h2>Práctica Libre</h2>
+            </header>
+            <div class="scroll-content">
+                <div class="stats-bar">
+                    <div>Resueltos: <span id="pract-solved">0</span></div>
+                    <div>Aciertos: <span id="pract-correct" class="text-green">0</span></div>
+                </div>
+                <div class="question-card" id="practice-card">
+                    <h3 id="pract-q-text">Pregunta de práctica...</h3>
+                    <div class="options-grid" id="pract-options">
+                        <!-- Opciones generadas por JS -->
+                    </div>
+                    <button id="btn-pract-next" class="btn-secondary hidden mt-3">Siguiente Ejercicio</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRO TEST -->
+        <section id="screen-test-intro" class="screen hidden content-screen">
+            <header class="sub-header">
+                <button class="btn-back"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg></button>
+                <h2>Evaluación Oficial</h2>
+            </header>
+            <div class="scroll-content center-flex">
+                <div class="warning-box">
+                    <h3>⚠️ Reglas del Examen</h3>
+                    <ul>
+                        <li>Son 15 preguntas de opción múltiple.</li>
+                        <li><strong>PROHIBIDO</strong> salir de la aplicación o cambiar de pestaña.</li>
+                        <li>Si el sistema detecta que sales, sonará una alarma fuerte y tu intento será <strong>ANULADO</strong>.</li>
+                    </ul>
+                    <button id="btn-start-test" class="btn-danger mt-4">Comprendo, Iniciar Test</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEST ACTIVO -->
+        <section id="screen-test-active" class="screen hidden test-mode-screen">
+            <div class="test-header">
+                <div>Pregunta <span id="test-current-q">1</span>/15</div>
+                <div class="test-warning">Modo Seguro Activo</div>
+            </div>
+            <div class="test-body">
+                <h2 id="test-q-text">Pregunta...</h2>
+                <div class="options-grid" id="test-options">
+                    <!-- JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTADO TEST -->
+        <section id="screen-test-result" class="screen hidden content-screen">
+            <div class="scroll-content center-flex">
+                <div class="result-box">
+                    <div class="icon-huge" id="result-icon">🏆</div>
+                    <h2 id="result-title">¡Examen Completado!</h2>
+                    <p class="score-text">Tu puntaje: <span id="result-score">0</span>/15</p>
+                    <p id="result-msg">¡Buen trabajo!</p>
+                    <button id="btn-finish-test" class="btn-primary mt-4">Volver al Menú</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONFIGURACIÓN / UPLOAD PREGUNTAS -->
+        <section id="screen-settings" class="screen hidden content-screen">
+            <header class="sub-header">
+                <button class="btn-back"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg></button>
+                <h2>Configuración</h2>
+            </header>
+            <div class="scroll-content">
+                <div class="settings-card">
+                    <h3>Gestión de Preguntas</h3>
+                    <p>Actualmente hay <strong id="db-q-count">120</strong> preguntas en el banco.</p>
+                    <p class="text-small text-muted">Sube un archivo .json para agregar más preguntas por lote.</p>
+                    <label for="file-upload" class="btn-secondary file-upload-btn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" class="mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Seleccionar Archivo JSON
+                    </label>
+                    <input type="file" id="file-upload" accept=".json" class="hidden-input">
+                    <div id="upload-status" class="mt-2 text-small"></div>
+                </div>
+                <button id="btn-reset-data" class="btn-danger mt-4">Borrar mis datos (Salir)</button>
+            </div>
+        </section>
+
+        <!-- OVERLAY ALARMA -->
+        <div id="alarm-overlay" class="overlay hidden">
+            <div class="alarm-box">
+                <svg class="alert-icon pulse" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <h2>¡ALERTA DE SEGURIDAD!</h2>
+                <p>Saliste de la aplicación durante el examen.</p>
+                <p>El intento ha sido <strong>ANULADO</strong>.</p>
+                <button id="btn-stop-alarm" class="btn-danger mt-3">Detener Alarma y Salir</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
